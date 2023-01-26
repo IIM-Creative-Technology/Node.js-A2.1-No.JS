@@ -6,15 +6,11 @@ const gridSize = 32
 
 //grid creation
 for(let i=0; i<gridSize; i++){
-
-    let div = document.createElement('div')
-    div.classList.add('row')
-    grid.appendChild(div)
     for(let j=0; j<gridSize; j++){
         let cell = document.createElement('div')
         cell.id = `_${j}_${i}`
         cell.addEventListener('click', newCell)
-        document.querySelector('.row:last-child').appendChild(cell)
+        grid.appendChild(cell)
     }
 }
 
