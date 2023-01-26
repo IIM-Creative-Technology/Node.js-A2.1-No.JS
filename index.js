@@ -19,7 +19,7 @@ app.use(express.json());
 
 // ROUTES --------------------------------------------------------------------------------------------------------------
 app.get('/', (req, res) => {
-    res.send('Hello World!');
+    res.send('<h1>Hello World !</h1>')
 });
 
 // SOCKET.IO -----------------------------------------------------------------------------------------------------------
@@ -28,6 +28,13 @@ ioServer.on('connection', (socket) => {
     socket.on('disconnect', () => {
         console.log('User disconnected');
     });
+
+    //PixelWar
+    socket.on('newCell', (data)=>{
+        console.log(data)
+        //TODO : insérer dans la base de données
+        ioServer.emit('globalCell', {msg: "Cell Changed", cell_data: data})
+    })
 });
 
 // SERVER --------------------------------------------------------------------------------------------------------------
