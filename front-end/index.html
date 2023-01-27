@@ -10,7 +10,60 @@
 </head>
 <body>
 
+
+<div class="flex flex-wrap justify-evenly w-full pt-32 ">
+    <div id="LoginSection" class="w-[500px] h-[500px] bg-teal-700 rounded-2xl flex flex-col justify-center ">
+
+        <div class="flex justify-center text-amber-400 font-bold text-2xl pb-12">
+            <h2>Login</h2>
+        </div>
+
+        <div class="flex justify-center">
+            <form class="space-y-4 md:space-y-6" method="POST">
+                <div>
+                    <label class="block mb-2 text-sm font-medium text-amber-400">Votre Pseudo</label>
+                    <input type="username" name="username" id="loginUsername" placeholder="XxX_PixelEnjoyerdu69_XxX" class=" border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-[20rem] p-2.5 dark:border-gray-600 dark:placeholder-gray-400 text-black dark:focus:ring-blue-500 dark:focus:border-blue-500" >
+                </div>
+                <div>
+                    <label  class="block mb-2 text-sm font-medium text-amber-400">Mot de passe</label>
+                    <input type="password" name="password" id="loginPassword" placeholder="••••••••" class="border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-[20rem] p-2.5 dark:border-gray-600 dark:placeholder-gray-400 text-black dark:focus:ring-blue-500 dark:focus:border-blue-500" >
+                </div>
+
+                <button type="submit" class="w-full text-white bg-primary-600 border-solid border-black hover:bg-primary-700 focus:ring-4  focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">Se Connecter</button>
+                <p class="text-sm font-light text-gray-500 dark:text-blue-400"><a href="#" class="font-medium text-blue-600 hover:underline dark:text-blue-500"></a>
+                </p>
+            </form>
+        </div>
+    </div>
+
+
+    <div id="RegisterSection" class="w-[500px] h-[500px] bg-teal-700 rounded-2xl flex flex-col justify-center ">
+        <div class="flex justify-center text-amber-400 font-bold text-2xl pb-12">
+            <h2>Register</h2>
+        </div>
+        <div class="flex justify-center">
+            <form class="space-y-4 md:space-y-6" method="POST">
+                <div>
+                    <label  class="block mb-2 text-sm font-medium text-amber-400 ">Votre Pseudo</label>
+                    <input type="username" name="username" id="registerUsername" placeholder="XxX_PixelEnjoyerdu69_XxX" class=" border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-[20rem] p-2.5 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" >
+                </div>
+                <div>
+                    <label class="block mb-2 text-sm font-medium text-amber-400 ">Mot de passe</label>
+                    <input type="password" name="password" id="registerPassword" placeholder="••••••••" class="border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-[20rem] p-2.5 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" >
+                </div>
+
+                <button type="submit" class="w-full text-white bg-primary-600 border-solid border-black hover:bg-primary-700 focus:ring-4  focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">Se Connecter</button>
+                <p class="text-sm font-light text-gray-500 dark:text-blue-400"><a href="#" class="font-medium text-blue-600 hover:underline dark:text-blue-500"></a>
+                </p>
+            </form>
+        </div>
+    </div>
+
+</div>
+
 <script src="http://localhost:3000/socket.io/socket.io.js"></script>
+<script src="https://cdn.tailwindcss.com"></script>
 <script src="./script.js"></script>
+
 </body>
 </html>
