@@ -2,7 +2,8 @@
 const http = require('http');
 const express = require('express');
 const cors = require('cors');
-const {Server} = require('socket.io');
+const { Server } = require('socket.io');
+require("dotenv").config();
 
 // APP -----------------------------------------------------------------------------------------------------------------
 const app = express();
@@ -33,4 +34,5 @@ ioServer.on('connection', (socket) => {
 // SERVER --------------------------------------------------------------------------------------------------------------
 httpServer.listen(3000, () => {
     console.log('Server listening on port 3000');
+    
 });
