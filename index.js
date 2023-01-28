@@ -61,6 +61,8 @@ app.delete('/message/:id', (req, res) => {
     res.send('suppression d un message');
 });
 /* routes pixels */
+/* x, y, userid, color */
+
 app.get('/pixel', (req, res) => {
     res.send('Lecture d un pixel');
 });
