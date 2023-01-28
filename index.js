@@ -60,8 +60,18 @@ app.post('/message/user/:id', (req, res) => {
 app.delete('/message/:id', (req, res) => {
     res.send('suppression d un message');
 });
-/* routes messages */
+/* routes pixels */
+app.get('/pixel', (req, res) => {
+    res.send('Lecture d un pixel');
+});
 
+app.put('/pixel/:id/user/:id', (req, res) => {
+    res.send('mise à jour d un pixel');
+});
+
+app.post('/pixel/user/:id', (req, res) => {
+    res.send('creation d un pixel');
+});
 // SOCKET.IO -----------------------------------------------------------------------------------------------------------
 ioServer.on('connection', (socket) => {
     console.log('User connected');
