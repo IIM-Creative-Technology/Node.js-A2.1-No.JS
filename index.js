@@ -18,9 +18,29 @@ app.use(cors());
 app.use(express.json());
 
 // ROUTES --------------------------------------------------------------------------------------------------------------
-app.get('/', (req, res) => {
-    res.send('Hello World!');
+
+
+app.get('/user', (req, res) => {
+    res.send('Lecture  de tous les users');
 });
+
+app.get('/user/:id', (req, res) => {
+    res.send('Lecture d un user');
+});
+
+app.put('/user/:id', (req, res) => {
+    res.send('mise à jour d un user');
+});
+
+app.post('/user', (req, res) => {
+    res.send('insertion d un user');
+});
+
+app.delete('/user/:userId', (req, res) => {
+    res.send('suppression d un user');
+});
+
+
 
 // SOCKET.IO -----------------------------------------------------------------------------------------------------------
 ioServer.on('connection', (socket) => {
