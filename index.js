@@ -19,7 +19,7 @@ app.use(express.json());
 
 // ROUTES --------------------------------------------------------------------------------------------------------------
 
-
+/* routes users */
 app.get('/user', (req, res) => {
     res.send('Lecture  de tous les users');
 });
@@ -36,11 +36,31 @@ app.post('/user', (req, res) => {
     res.send('insertion d un user');
 });
 
-app.delete('/user/:userId', (req, res) => {
+app.delete('/user/:Id', (req, res) => {
     res.send('suppression d un user');
 });
 
+/* routes messages */
+app.get('/message', (req, res) => {
+    res.send('Lecture  de tous les message');
+});
 
+app.get('/message/:id', (req, res) => {
+    res.send('Lecture d un message');
+});
+
+app.put('/message/:id/user/:id', (req, res) => {
+    res.send('mise à jour d un message');
+});
+
+app.post('/message/user/:id', (req, res) => {
+    res.send('insertion d un message');
+});
+
+app.delete('/message/:id', (req, res) => {
+    res.send('suppression d un message');
+});
+/* routes messages */
 
 // SOCKET.IO -----------------------------------------------------------------------------------------------------------
 ioServer.on('connection', (socket) => {
