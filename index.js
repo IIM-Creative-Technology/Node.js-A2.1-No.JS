@@ -17,7 +17,7 @@ const ioServer = new Server(httpServer, {
   },
 });
 
-db.GetAllUser();
+
 
 
 // MIDDLEWARE ----------------------------------------------------------------------------------------------------------
@@ -27,31 +27,43 @@ app.use(express.json());
 // ROUTES --------------------------------------------------------------------------------------------------------------
 
 /* routes users */
-app.get('/user', (req, res) => {
-    
-    res.send(db.GetAllUser());
+app.get("/user", (req, res) => {
+  db.GetAllUser(function (user) {
+    res.json(user);
+  });
 });
 
 app.get('/user/:id', (req, res) => {
-    res.send(db.GetDataUserById(req.params.id));
+    db.GetDataUserById(req.params.id, function (user) { 
+        res.json(user);
+    });
 });
 
 app.post('/user', (req, res) => {
-    res.send(db.AddUserToDatabase(req.body.FisrtName, req.body.LastName, req.body.Password, req.body.Pseudo));
+    db.AddUserToDatabase(req.body, (user) => { 
+
+        res.json(user);
+    });
 });
 
 app.put('/user/:id', (req, res) => {
-    res.send(db.UpdateUserDataById(req.params.id, req.body.FisrtName, req.body.LastName, req.body.Password, req.body.Pseudo))
+     db.UpdateUserDataById(UserId, req.body, (user) => {
+       res.json(user);
+     });
 });
 
 
 app.delete('/user/:id', (req, res) => {
-    res.send(db.DeleteUserById(req.params.id));
+    res.send(db.DeleteUserById(req.params.id, function (user) {
+        res.json(user);
+     }));
 });
 
 /* routes messages */
 app.get('/message', (req, res) => {
-    res.send(db.GetAllMessage());
+    db.GetAllMessage(function (message) { 
+        res.json(message);
+    })
 });
 
 app.get('/message/:id', (req, res) => {
@@ -59,11 +71,11 @@ app.get('/message/:id', (req, res) => {
 });
 
 app.post('/message/:id', (req, res) => {
-    res.send(db.AddMessageToDatabase(req.body.Message, req.body.Pseudo, req.body.Date));
+    
 });
 
 app.delete('/message/:id', (req, res) => {
-    res.send(db.DeleteMessageById(req.params.id));
+    
 });
 
 /* routes pixels */
@@ -90,4 +102,4 @@ httpServer.listen(3000, () => {
  
 
 });
-db.GetAllMessage();
+db.GetAllUser(callback);
