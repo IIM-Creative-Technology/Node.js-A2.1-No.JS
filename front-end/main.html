@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+
+<nav class="flex justify-between bg-teal-800 text-amber-400 h-[4rem] text-2xl py-3 px-10 shadow">
+    <div>PixelChat</div>
+    <div class="flex gap-10">
+        <a href="index.html" id="deconnexionButton">Déconnexion</a>
+    </div>
+</nav>
+
+<main class="h-full flex h-[91vh]">
+    <div id="pixelWarContainer" class="bg-neutral-400  w-[62rem] ">
+    </div>
+    <div id="chatContainer" class="bg-emerald-900  w-[38rem] py-5 px-5">
+        <div id="chatDisplay" class=" bg-gray-300  rounded-xl mx-2 w-[35rem] h-[35rem]">
+
+        </div>
+        <div class="flex py-5 px-5 ">
+            <input class="w-[38rem] bg-gray-300 pt-5 px-3 rounded-xl mx-2" type="text" placeholder="Ecrire un message ici..." id="inputMessage"/>
+            <button id="sendMessage" class="bg-teal-800 py-5 px-3 rounded-xl mx-2">ENVOYER</button>
+        </div>
+    </div>
+</main>
+
+<script src="http://localhost:3000/socket.io/socket.io.js"></script>
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="./script.js"></script>
+</body>
+</html>
