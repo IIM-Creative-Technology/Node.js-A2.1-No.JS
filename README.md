@@ -71,8 +71,10 @@ POST /user
 
 | Parameter | Type     | Description                |
 | :-------- | :------- | :------------------------- |
-| `name`    | `string` | **Required**. User's name  |
-| `email`   | `string` | **Required**. User's email |
+| `FirstName`    | `string` | **Required**. User's First name  |
+| `LastName`    | `string` | **Required**. User's Last name  |
+| `Password`   | `string` | **Required**. User's password |
+| `Pseudo`   | `string` | **Required**. User's pseudo |
 
 #### Update a user
 
@@ -83,8 +85,10 @@ PUT /user/:id
 | Parameter | Type     | Description                |
 | :-------- | :------- | :------------------------- |
 | `id`      | `string` | **Required**. User's id    |
-| `name`    | `string` | **Required**. User's name  |
-| `email`   | `string` | **Required**. User's email |
+| `FirstName`    | `string` | **Required**. User's First name  |
+| `LastName`    | `string` | **Required**. User's Last name  |
+| `Password`   | `string` | **Required**. User's password |
+| `Pseudo`   | `string` | **Required**. User's pseudo |
 
 #### Delete a user
 
@@ -102,6 +106,10 @@ DELETE /user/:id
 
 ```http
 GET /message
+| Parameter | Type     | Description                |
+| :-------- | :------- | :------------------------- |
+| `quantity`      | `Number` | **Optional**. How many message it return   |
+
 ```
 
 #### Get a specific message
@@ -109,6 +117,7 @@ GET /message
 ```http
 GET /message/:id
 ```
+
 
 | Parameter | Type     | Description                |
 | :-------- | :------- | :------------------------- |
@@ -123,7 +132,7 @@ POST /message
 | Parameter | Type     | Description                |
 |:----------| :------- | :------------------------- |
 | `body`    | `string` | **Required**. Message's content  |
-| `user`    | `string` | **Required**. Message's author   |
+| `author_id`    | `string` | **Required**. Message's author   |
 
 #### Delete a message
 
@@ -162,7 +171,7 @@ This project has no license.
 ## Authors
 
 - [**Félix Laviéville**](https://github.com/TuberculeP)
+- [**Medhi Bellam**](https://github.com/ImDimeh)
 - [**Thibaut François**](add your github link here)
 - [**Mathis Noël**](add your github link here)
-- [**Medhi Bellam**](add your github link here)
 - [**Ryan Bardat**](add your github link here)
