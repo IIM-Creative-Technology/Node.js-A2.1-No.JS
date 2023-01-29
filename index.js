@@ -25,8 +25,53 @@ app.use(cors());
 app.use(express.json());
 
 // ROUTES --------------------------------------------------------------------------------------------------------------
-app.get("/", (req, res) => {
-  res.send("Hello World!");
+
+/* routes users */
+app.get('/user', (req, res) => {
+    res.send('Lecture  de tous les users');
+});
+
+app.get('/user/:id', (req, res) => {
+    res.send('Lecture d un user');
+});
+
+app.post('/user', (req, res) => {
+    res.send('insertion d un user');
+});
+
+app.put('/user/:id', (req, res) => {
+    res.send('mise à jour d un user');
+});
+
+app.delete('/user/:id', (req, res) => {
+    res.send('suppression d un user');
+});
+
+/* routes messages */
+app.get('/message', (req, res) => {
+    res.send('Lecture  de tous les message');
+});
+
+app.get('/message/:id', (req, res) => {
+    res.send('Lecture d un message');
+});
+
+app.post('/message/:id', (req, res) => {
+    res.send('insertion d un message');
+});
+
+app.delete('/message/:id', (req, res) => {
+    res.send('suppression d un message');
+});
+
+/* routes pixels */
+app.get('/pixel', (req, res) => {
+    res.send('Lecture de la grille de pixels');
+});
+
+app.put('/pixel', (req, res) => {
+    res.send('mise à jour d un pixel');
+
 });
 
 // SOCKET.IO -----------------------------------------------------------------------------------------------------------
