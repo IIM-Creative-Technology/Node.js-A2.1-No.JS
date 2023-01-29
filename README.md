@@ -106,11 +106,12 @@ DELETE /user/:id
 
 ```http
 GET /message
+```
 | Parameter | Type     | Description                |
 | :-------- | :------- | :------------------------- |
 | `quantity`      | `Number` | **Optional**. How many message it return   |
 
-```
+
 
 #### Get a specific message
 
