@@ -10,7 +10,7 @@
 <nav class="flex justify-between bg-teal-800 text-amber-400 h-[4rem] text-2xl py-3 px-10 shadow">
     <div>PixelChat</div>
     <div class="flex gap-10">
-        <a href="index.html" id="deconnexionButton">Déconnexion</a>
+        <button id="deconnexionButton">Déconnexion</button>
     </div>
 </nav>
 
@@ -30,6 +30,54 @@
 
 <script src="http://localhost:3000/socket.io/socket.io.js"></script>
 <script src="https://cdn.tailwindcss.com"></script>
-<script src="./script.js"></script>
+<script>
+    const socket = io('http://localhost:3000');
+    //si il n'y a pas de token dans le local storage, on redirige vers la page de connexion
+    if (!localStorage.getItem('token')) {
+        window.location.href = 'index.html';
+    }
+
+    function displayMessage(data){
+        const messageElement = document.createElement('div');
+        messageElement.innerHTML = data.body;
+        console.log(data.author_id[0]);
+        fetch('http://localhost:3000/user/'+data.author_id[0], {
+            headers:{
+                'Authorization': 'Bearer ' + localStorage.getItem('token')
+            }
+        }).then((response) => {
+            return response.json();
+        }).then((data) => {
+            messageElement.innerHTML = data.Pseudo + ' : ' + messageElement.innerHTML;
+            document.getElementById('chatDisplay').appendChild(messageElement);
+        });
+    }
+
+    fetch('http://localhost:3000/message', {
+        headers: {
+            'Authorization': 'Bearer ' + localStorage.getItem('token')
+        }
+    }).then((response) => {
+        return response.json();
+    }).then((data) => {
+        data.forEach((message) => {
+            displayMessage(message);
+        });
+    });
+
+    document.getElementById('sendMessage').addEventListener('click', () => {
+        const message = document.getElementById('inputMessage').value;
+        socket.emit('newMessage', {'message': message, 'token': localStorage.getItem('token')});
+    });
+
+    socket.on("broadcast", (data) => {
+        displayMessage(data);
+    });
+
+    document.getElementById('deconnexionButton').addEventListener('click', () => {
+        localStorage.removeItem('token');
+        window.location.href = 'index.html';
+    });
+</script>
 </body>
 </html>

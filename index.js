@@ -24,9 +24,12 @@ const secretKey = "secret-key";
 // MIDDLEWARE ----------------------------------------------------------------------------------------------------------
 app.use(cors());
 app.use(express.json());
-
 app.use((req, res, next) => {
-    const token = req.header("Authorization");
+    if(req.url === "/login" || req.url === "/user" || req.url === "/logout" || req.url === "/register"){
+        next();
+        return;
+    }
+    const token = req.header("Authorization").split(" ")[1];
     if (!token) {
     return res.status(401).send({ message: "Access denied" });
     }
@@ -44,29 +47,22 @@ app.use((req, res, next) => {
 
 /* routes users */
 
-app.get("/user", (req, res) => {
-  db.GetAllUser(function (user) {
-    res.json(user);
-  });
-});
-
-
 app.post("/login", (req, res) => {
+    console.log(req.body)
     const { username, password } = req.body;
 
-    // Authentification
-    //const user = authenticateUser(username, password);
-    const user = true;
-
-    const token = jwt.sign({ user }, secretKey, { expiresIn: "1h" });
-    res.json({ message: "Login successful", "token":token });
-
-    // if (user) {
-    //     const token = jwt.sign({ user }, secretKey, { expiresIn: "1h" });
-    //     res.send({ message: "Login successful", token });
-    // } else {
-    //     res.status(401).send({ message: "Incorrect username or password" });
-    // }
+    db.GetDataUserByPseudo(username, function (user) {
+        if(user){
+            if(user.Password === password){
+                const token = jwt.sign({ user }, secretKey, { expiresIn: "1h" });
+                res.json({ message: "Login successful", "token":token });
+            }else{
+                res.status(401).send({ message: "Incorrect username or password" });
+            }
+        }else{
+            res.status(401).send({ message: "Incorrect username or password" });
+        }
+    });
 });
 
 app.post("/logout", (req, res) => {
@@ -74,12 +70,9 @@ app.post("/logout", (req, res) => {
     res.send({ message: "Logout successful", destroyToken : true });
 });
 
-
-// SOCKET.IO -----------------------------------------------------------------------------------------------------------
-ioServer.on('connection', (socket) => {
-    console.log('User connected');
-    socket.on('disconnect', () => {
-        console.log('User disconnected');
+app.get("/user", (req, res) => {
+    db.GetAllUser(function (user) {
+        res.json(user);
     });
 });
 
@@ -120,6 +113,11 @@ app.get('/message', (req, res) => {
 });
 
 app.post('/message', (req, res) => {
+    let token = req.header("Authorization");
+    //on utilise jwt pour extraire le user du token
+    const decoded = jwt.verify(token, secretKey);
+    req.body.author_id = decoded.user._id;
+
     db.AddMessageToDatabase(req.body, (message) => {
         res.json(message);
     });
@@ -140,6 +138,17 @@ ioServer.on("connection", (socket) => {
   console.log("User connected");
   socket.on("disconnect", () => {
     console.log("User disconnected");
+  });
+  socket.on("newMessage", (message) => {
+    console.log("Message received", message);
+    let token = message.token;
+    let msg = message.message;
+    //on utilise jwt pour extraire le user du token
+    const decoded = jwt.verify(token, secretKey);
+    db.AddMessageToDatabase({'author_id': decoded.user._id, 'body': msg}, (message) => {
+        console.log("Message added to database : ", message);
+        ioServer.emit("broadcast", message);
+    });
   });
 });
 

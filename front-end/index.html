@@ -18,7 +18,7 @@
         </div>
 
         <div class="flex justify-center">
-            <form class="space-y-4 md:space-y-6" method="POST" id="form1">
+            <form class="space-y-4 md:space-y-6" method="POST">
                 <div>
                     <label for="loginUsername" class="block mb-2 text-sm font-medium text-amber-400">Votre Pseudo</label>
                     <input type="text" name="username" autocomplete="username" id="loginUsername" placeholder="XxX_PixelEnjoyerdu69_XxX" class=" border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-[20rem] p-2.5 dark:border-gray-600 dark:placeholder-gray-400 text-black dark:focus:ring-blue-500 dark:focus:border-blue-500" >
@@ -29,7 +29,7 @@
                     <input type="password" name="password" autocomplete="current-password" id="loginPassword" placeholder="••••••••" class="border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-[20rem] p-2.5 dark:border-gray-600 dark:placeholder-gray-400 text-black dark:focus:ring-blue-500 dark:focus:border-blue-500" >
                 </div>
 
-                <button type="button" class="w-full text-white bg-primary-600 border-solid border-black hover:bg-primary-700 focus:ring-4  focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">Se Connecter</button>
+                <button type="button" id="form1" class="w-full text-white bg-primary-600 border-solid border-black hover:bg-primary-700 focus:ring-4  focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">Se Connecter</button>
                 <p class="text-sm font-light text-gray-500 dark:text-blue-400"><a href="#" class="font-medium text-blue-600 hover:underline dark:text-blue-500"></a>
                 </p>
             </form>
@@ -42,17 +42,25 @@
             <h2>Register</h2>
         </div>
         <div class="flex justify-center">
-            <form class="space-y-4 md:space-y-6" method="POST" id="form2">
+            <form class="space-y-4 md:space-y-6" method="POST">
                 <div>
-                    <label for="registerUsername" class="block mb-2 text-sm font-medium text-amber-400 ">Votre Pseudo</label>
-                    <input type="text" name="username" autocomplete="username" id="registerUsername" placeholder="XxX_PixelEnjoyerdu69_XxX" class=" border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-[20rem] p-2.5 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" >
+                    <label for="registerFirstName" class="block mb-2 text-sm font-medium text-amber-400 ">Prénom</label>
+                    <input type="text" name="username" autocomplete="firstname" id="registerFirstName" placeholder="Francis" class=" border border-gray-300 text-black sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-[20rem] p-2.5 dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500" >
+                </div>
+                <div>
+                    <label for="registerLastName" class="block mb-2 text-sm font-medium text-amber-400 ">Nom</label>
+                    <input type="text" autocomplete="lastname" name="lastname" id="registerLastName" placeholder="Bertrand" class="border border-gray-300 text-black sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-[20rem] p-2.5 dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500" >
+                </div>
+                <div>
+                    <label for="registerPseudo" class="block mb-2 text-sm font-medium text-amber-400 ">Votre Pseudo</label>
+                    <input type="text" name="username" autocomplete="username" id="registerPseudo" placeholder="XxX_PixelEnjoyerdu69_XxX" class=" border border-gray-300 text-black sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-[20rem] p-2.5 dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500" >
                 </div>
                 <div>
                     <label for="registerPassword" class="block mb-2 text-sm font-medium text-amber-400 ">Mot de passe</label>
-                    <input type="password" autocomplete="new-password" name="password" id="registerPassword" placeholder="••••••••" class="border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-[20rem] p-2.5 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" >
+                    <input type="password" autocomplete="new-password" name="password" id="registerPassword" placeholder="••••••••" class="border border-gray-300 text-black sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-[20rem] p-2.5 dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500" >
                 </div>
 
-                <button type="button" class="w-full text-white bg-primary-600 border-solid border-black hover:bg-primary-700 focus:ring-4  focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">S'inscrire</button>
+                <button type="button" id="form2" class="w-full text-white bg-primary-600 border-solid border-black hover:bg-primary-700 focus:ring-4  focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">S'inscrire</button>
                 <p class="text-sm font-light text-gray-500 dark:text-blue-400"><a href="#" class="font-medium text-blue-600 hover:underline dark:text-blue-500"></a>
                 </p>
             </form>

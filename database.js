@@ -57,6 +57,19 @@ function GetDataUserById(id , callback) {
 }
 
 /**
+ * Récupère les données d'un utilisateur par son pseudo
+ * @param {*} pseudo pseudo de l'utilisateur à récupérer
+ * @param callback la fonction qui va recevoir les données
+ * @returns renvoie toutes les datas de l'utilisateur
+ */
+function GetDataUserByPseudo(pseudo , callback) {
+  User.findOne({Pseudo: pseudo}, function (err, user) {
+    if(err) return err
+    callback(user);
+  })
+}
+
+/**
  * Récupère tous les messages de la base de données
  * @param {Function} callback la fonction qui va recevoir les données
  * @param {Number} quantity combient de message on veux récupérer
@@ -64,7 +77,7 @@ function GetDataUserById(id , callback) {
  */
 function GetAllMessage(callback, quantity = undefined) {
   if(quantity===undefined) quantity = 100;
-  Message.find().limit(quantity).sort({ DateTime: -1 }).exec(function (err, message) {
+  Message.find().limit(quantity).sort({ DateTime: 1 }).exec(function (err, message) {
     callback(message);
   });
 }
@@ -93,7 +106,7 @@ function AddUserToDatabase(form , callback) {
 
 /**
  * Ajoute un message à la base de données
- * @param {String} form contient toutes les données à ajouter dans une liste [author_id, body]
+ * @param {{author_id, message: *}} form contient toutes les données à ajouter dans une liste [author_id, body]
  * @param callback la fonction qui va recevoir les données pour le retour
  * @returns renvoie le message ajouté
  */
@@ -163,4 +176,5 @@ module.exports = {
   DeleteUserById,
   AddMessageToDatabase,
   GetAllMessage,
+  GetDataUserByPseudo,
 };
