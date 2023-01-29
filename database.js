@@ -21,6 +21,19 @@ const USER = new Schema({
 });
 const User = mongoose.model("User", USER);
 
+
+
+
+const Pixel = mongoose.model("Pixel", {
+  Pixeldatas: Array
+});
+
+const pixel = new Pixel({
+  Pixeldatas: ["FFFFFF"]
+});
+console.log(pixel);
+pixel.save();
+
 const message = new Schema({
   author_id: [{ type: Schema.Types.ObjectId, ref: "User" }],
   body: String,
