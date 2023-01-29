@@ -27,6 +27,7 @@ app.use(express.json());
 // ROUTES --------------------------------------------------------------------------------------------------------------
 
 /* routes users */
+
 app.get("/user", (req, res) => {
   db.GetAllUser(function (user) {
     res.json(user);
