@@ -40,42 +40,39 @@ app.get('/user/:id', (req, res) => {
 });
 
 app.post('/user', (req, res) => {
-    db.AddUserToDatabase(req.body, (user) => { 
-
+    db.AddUserToDatabase(req.body, (user) => {
         res.json(user);
     });
 });
 
 app.put('/user/:id', (req, res) => {
-     db.UpdateUserDataById(UserId, req.body, (user) => {
-       res.json(user);
+     db.UpdateUserDataById(req.params.id, req.body, (status) => {
+       res.json(status);
      });
 });
 
 
 app.delete('/user/:id', (req, res) => {
-    res.send(db.DeleteUserById(req.params.id, function (user) {
-        res.json(user);
-     }));
+    db.DeleteUserById(req.params.id, function (status) {
+        if(status){
+            res.json({status: "ok", msg: "user deleted"});
+        }else{
+            res.json({status: "error", msg: "user does not exists"});
+        }
+     });
 });
 
 /* routes messages */
 app.get('/message', (req, res) => {
     db.GetAllMessage(function (message) { 
         res.json(message);
-    })
+    }, req.query.limit??undefined)
 });
 
-app.get('/message/:id', (req, res) => {
-    res.send(db.GetDataMessageById(req.params.id));
-});
-
-app.post('/message/:id', (req, res) => {
-    
-});
-
-app.delete('/message/:id', (req, res) => {
-    
+app.post('/message', (req, res) => {
+    db.AddMessageToDatabase(req.body, (message) => {
+        res.json(message);
+    });
 });
 
 /* routes pixels */
@@ -102,4 +99,3 @@ httpServer.listen(3000, () => {
  
 
 });
-db.GetAllUser(callback);
