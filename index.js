@@ -28,40 +28,42 @@ app.use(express.json());
 
 /* routes users */
 app.get('/user', (req, res) => {
-    res.send('Lecture  de tous les users');
+    
+    res.send(db.GetAllUser());
 });
 
 app.get('/user/:id', (req, res) => {
-    res.send('Lecture d un user');
+    res.send(db.GetDataUserById(req.params.id));
 });
 
 app.post('/user', (req, res) => {
-    res.send('insertion d un user');
+    res.send(db.AddUserToDatabase(req.body.FisrtName, req.body.LastName, req.body.Password, req.body.Pseudo));
 });
 
 app.put('/user/:id', (req, res) => {
-    res.send('mise à jour d un user');
+    res.send(db.UpdateUserDataById(req.params.id, req.body.FisrtName, req.body.LastName, req.body.Password, req.body.Pseudo))
 });
 
+
 app.delete('/user/:id', (req, res) => {
-    res.send('suppression d un user');
+    res.send(db.DeleteUserById(req.params.id));
 });
 
 /* routes messages */
 app.get('/message', (req, res) => {
-    res.send('Lecture  de tous les message');
+    res.send(db.GetAllMessage());
 });
 
 app.get('/message/:id', (req, res) => {
-    res.send('Lecture d un message');
+    res.send(db.GetDataMessageById(req.params.id));
 });
 
 app.post('/message/:id', (req, res) => {
-    res.send('insertion d un message');
+    res.send(db.AddMessageToDatabase(req.body.Message, req.body.Pseudo, req.body.Date));
 });
 
 app.delete('/message/:id', (req, res) => {
-    res.send('suppression d un message');
+    res.send(db.DeleteMessageById(req.params.id));
 });
 
 /* routes pixels */
@@ -88,3 +90,4 @@ httpServer.listen(3000, () => {
  
 
 });
+db.GetAllMessage();
