@@ -6,10 +6,11 @@
     <link rel="stylesheet" href="./style.css">
 </head>
 <body>
+
 <nav class="flex justify-between bg-teal-800 text-amber-400 h-[4rem] text-2xl py-3 px-10 shadow">
     <div>PixelChat</div>
     <div class="flex gap-10">
-        <a href="index.html">Déconnexion</a>
+        <a href="index.html" id="deconnexionButton">Déconnexion</a>
     </div>
 </nav>
 
@@ -21,16 +22,11 @@
 
         </div>
         <div class="flex py-5 px-5 ">
-            <input class="w-[38rem] bg-gray-300 pt-5 px-3 rounded-xl mx-2" type="text" placeholder="Ecrire un message ici..."/>
-            <button onclick="sendMessage()" class="bg-teal-800 py-5 px-3 rounded-xl mx-2" >ENVOYER</button>
+            <input class="w-[38rem] bg-gray-300 pt-5 px-3 rounded-xl mx-2" type="text" placeholder="Ecrire un message ici..." id="inputMessage"/>
+            <button id="sendMessage" class="bg-teal-800 py-5 px-3 rounded-xl mx-2">ENVOYER</button>
         </div>
     </div>
 </main>
-
-
-
-
-
 
 <script src="http://localhost:3000/socket.io/socket.io.js"></script>
 <script src="https://cdn.tailwindcss.com"></script>

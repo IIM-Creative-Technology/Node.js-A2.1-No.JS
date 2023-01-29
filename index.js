@@ -111,8 +111,6 @@ app.delete('/user/:id', (req, res) => {
     res.json(user);
 });
 
-
-
 /* routes messages */
 /*-------------------------------------------------------------*/
 /* Cette route permet de récupérer la liste des messages       */
