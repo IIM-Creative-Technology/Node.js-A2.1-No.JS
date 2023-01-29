@@ -5,7 +5,7 @@ const loginUsername = document.getElementById('loginUsername');
 const loginPassword = document.getElementById('loginPassword');
 
 const formLogin = document.getElementById("form1")
-formLogin.addEventListener(click, () =>{
+formLogin.addEventListener('click', () =>{
     fetch("http://localhost:3000/user/connexion",
         {
             method: "POST",
@@ -15,21 +15,18 @@ formLogin.addEventListener(click, () =>{
             body: JSON.stringify({
                 loginUsername: loginUsername.value,
                 loginPassword: loginPassword.value,
-})
-        }).then(data => data.json())
-        .then(data => (data) => {
-            console.log(data)
-
-            }
-        )
+            })
+        })
+        .then(data => data.json())
+        .then(data => {console.log(data)})
 })
 
-////-------------------- Formulaire de d'inscription---------------------------------////
+////-------------------- Formulaire d'inscription---------------------------------////
 const registerUsername = document.getElementById('registerUsername');
 const registerPassword = document.getElementById('registerPassword');
 
 const formRegister = document.getElementById("form2")
-formRegister.addEventListener(click, () =>{
+formRegister.addEventListener('click', () =>{
     fetch("http://localhost:3000/user",
         {
             method: "POST",
@@ -40,10 +37,7 @@ formRegister.addEventListener(click, () =>{
                 registerUsername: registerUsername.value,
                 registerPassword: registerPassword.value,
             })
-        }).then(data => data.json())
-        .then(data => function (data){
-                console.log(data)
-
-            }
-        )
+        })
+        .then(data => data.json())
+        .then(data => {console.log(data)})
 })
